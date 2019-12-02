@@ -1,0 +1,21 @@
+os
+gi
+sys
+time
+socket
+platform
+threading
+mechanize
+libgtk-3-dev
+
+libgtk2.0-dev
+libpoppler-dev
+libpoppler-glib-dev
+gir1.2-webkit2-4.0
+
+
+#gi.require_version("Gtk", "3.0")
+#gi.require_version("WebKit2", "4.0")
+#from gi.repository import Gtk, Gio, WebKit2, GLib, GObject, Gdk, Pango
+#from gi.repository.GdkPixbuf import Pixbuf
+
