@@ -1,9 +1,122 @@
-<html>
-	<head>
-		<title>New Tab</title>
-	</head>
+<html lang=en utf-8>
 
-	<body>
-		<h1>WELCOME</h1>
-	</body>
+<style>
+	body,
+	html {
+		height: 100%;
+		margin: 0;
+	}
+
+	.bg {
+		height: 100%;
+		background-image: url("./assets/Quantum-Reality.jpg");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	.container {
+		padding: 30px;
+		position: relative;
+		top: 50%;
+
+	}
+
+	.row {
+		display: flex;
+		justify-content:center;
+	}
+
+	.column {
+		position: relative;
+		flex: 1;
+		margin: 20px 20px 20px 20px;
+		transition: .5s ease;
+		height: 100px;
+		max-width: 120px;
+		background-color: #26864b;
+		border-radius: 12px;
+		justify-content: center;
+
+	}
+
+	.column a{
+		color: white;
+		opacity: 100%;
+		text-decoration: none;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+    	-ms-transform: translate(-50%, -50%);
+	}
+
+	.column:hover{
+		transition: .5s ease;
+		height: 120px;
+		max-width: 144px;
+	}
+
+
+	footer {
+		width: 100%;
+		transition: 1.0s ease;
+		color: white;
+		background-color: rgba(0, 0, 0, 0.74);
+		position: fixed;
+		bottom: 20%;
+		text-align: center;
+		letter-spacing: 3px;
+		overflow: hidden;
+		font-size: 1%;
+
+	}
+
+	footer:hover {
+		transition: 0.5s ease;
+		color: #ad5fff;
+		letter-spacing: 8px;
+	}
+</style>
+
+<head>
+	<title>New Tab</title>
+</head>
+
+<body class="bg">
+
+	<div class="container">
+		<div class="row">
+			<div class="column" style="background-color: #000000;">
+				<a href="https://thismaker.itch.io" >Thismaker</a>
+			</div>
+			<div class="column" style="background-color: #1797d3;">
+				<a href="https://kali.org" >Kali Linux</a>
+			</div>
+			<div class="column" style="background-color: #26864b;">
+				<a href="https://github.com" >Git Hub</a>
+			</div>
+			<div class="column" style="background-color: #971e46;">
+				<a href="https://YouTube.com" >YouTube</a>
+			</div>
+		</div>
+
+	</div>
+
+	<!--
+		<center><h1>QUASIUM</h1></center>
+		<br>
+		<center><h3>WELCOME</h3></center>
+		<br></br>
+		-->
+
+
+
+</body>
+
+<footer>
+	<p>WELCOME TO EXPLORE THE LIMIT OF NO-LIMITS</p>
+</footer>
+
 </html>

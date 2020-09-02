@@ -20,6 +20,7 @@ __subtitle__ = "Quasium - Eccentric Tensor Labs"
 
 icon_path = os.getcwd() + "/lib/icons/"
 proc_path = os.getcwd() + "/proc/"
+back_path = os.getcwd() + "/lib/background/def.html"
 
 KALI_URL = "file:///usr/share/kali-defaults/web/homepage.html"
 
@@ -58,7 +59,7 @@ class About(Gtk.AboutDialog):
 		self.set_website("https://thehackerrealm.blogspot.com")
 		self.set_website_label("EccentricTensorLabs")
 		self.set_authors(['Anthony "Phystro" Karoki'])
-		self.set_artists(['Quasar', 'Linux', 'Anthony "Phystro" Karoki'])
+		self.set_artists(['Anthony "PhyTensor" Karoki', 'Thismaker'])
 		self.set_documenters(['Quaser', 'Omicron', 'Betelguese'])
 
 		logoimage = Gtk.Image()
@@ -278,7 +279,7 @@ class MainWindow(Gtk.Window):
 		# self.app_settings.connect("clicked", self.go_settings)
 
 		self.tabwebview.connect("notify::title", self.title_changed)
-		# self.tabwebview.connect("load-changed", self.url_changed)
+		self.tabwebview.connect("load-changed", self.url_changed)
 	##########Credits and About######################
 	def show_about(self, widget):
 		credits = About()
@@ -308,15 +309,20 @@ class MainWindow(Gtk.Window):
 	##########Web Navigation############################
 	def go_prev(self, widget):
 		self.tabwebview.go_back()
+		#self.url_changed()
 	def go_next(self, widget):
 		self.tabwebview.go_forward()
+		#self.url_changed()
 	def go_home(self, widget):
 		self.tabwebview.load_uri(KALI_URL)
+		#self.url_changed()
 	def go_refresh(self, widget=None):
 		# self.tabwebview.reload()	#reload current contents of webpage
 		self.tabwebview.reload_bypass_cache()	#reload current contents of webpage without using any cached data
+		#self.url_changed()
 	def stop_loading(self, widget):
 		self.tabwebview.stop_loading()
+		#self.url_changed()
 	##########Search on Search Bar#####################
 	def go_search(self, widget):
 		self.tabwebview.grab_focus()
@@ -329,8 +335,20 @@ class MainWindow(Gtk.Window):
 	##########URL Changes#######################################
 	def url_changed(self, widget=None, event=None):
 		new_url = self.tabwebview.get_uri()
-		self.search_bar.set_text(new_url)
+
+		if new_url != str("file://" + back_path):
+			self.search_bar.set_text(new_url)
+		else:
+			print ("gotten text: ", self.search_bar.get_text() )
+			self.search_bar.set_text("")
+
 		is_loadn = self.tabwebview.is_loading()
+		print(new_url)
+		#print("url has been called")
+
+		#self.title_changed()
+
+
 		if is_loadn == True:
 			self.spin.start()
 			self.refresh.hide()
@@ -351,6 +369,9 @@ class MainWindow(Gtk.Window):
 		num = self.notebook.page_num(page_view)
 		print(current_page, num)
 		self.page_title = str(self.tabwebview.get_title())
+
+		#self.title_changed()
+		
 		if addr != None and str(addr).startswith("file:"):
 			dir_title = str(addr[8:])
 			self.notebook.set_tab_label(self.notebook.get_nth_page(num), self.tablbl(dir_title))
@@ -376,7 +397,7 @@ class MainWindow(Gtk.Window):
 		self.tabcalls()
 		self.movable_tabs()
 		if addr == None:
-			naddr = "file://" + icon_path + "../background/def.html"
+			naddr = "file://" + back_path 				# "file://" + icon_path + "../background/def.html"
 			self.tabwebview.load_uri(naddr)
 			self.search_bar.set_text("")
 			self.search_bar.grab_focus()
