@@ -8,7 +8,7 @@ import threading
 import mechanize
 gi.require_version("Gtk", "3.0")
 gi.require_version("WebKit2", "4.0")
-from gi.repository import Gtk, Gio, WebKit2, GLib, GObject, Gdk, Pango
+from gi.repository import Gtk, Gio, WebKit2, GLib, GObject, Gdk, Pango, GdkPixbuf
 from gi.repository.GdkPixbuf import Pixbuf
 from include.query_handler import QueryService
 from time import time, sleep
@@ -60,11 +60,13 @@ class About(Gtk.AboutDialog):
 		self.set_website_label("EccentricTensorLabs")
 		self.set_authors(['Anthony "Phystro" Karoki'])
 		self.set_artists(['Anthony "PhyTensor" Karoki', 'Thismaker'])
-		self.set_documenters(['Quaser', 'Omicron', 'Betelguese'])
+		self.set_documenters(['Simple To Use', 'KISS', 'Betelgeuse'])
 
 		logoimage = Gtk.Image()
-		logoimage.set_from_file(icon_path + "eglobe.svg")
+		logoimage.set_from_file(icon_path + "PhyIcon.svg")
 		logop = logoimage.get_pixbuf()
+		logop = logop.scale_simple(96, 96, GdkPixbuf.InterpType.BILINEAR)
+
 		self.set_logo(logop)
 
 #######################################################################################
@@ -169,8 +171,8 @@ class MainWindow(Gtk.Window):
 		self.set_position(Gtk.WindowPosition.CENTER)
 		self.set_resizable(True)
 		self.activate_focus()
-		self.set_icon_from_file(icon_path + "eglobe.svg")
-		self.set_default_icon_from_file(icon_path + "eglobe.svg")
+		self.set_icon_from_file(icon_path + "PhyIcon.svg")
+		self.set_default_icon_from_file(icon_path + "PhyIcon.svg")
 
 		#HeaderBar
 		self.headerbar = Gtk.HeaderBar(spacing=0)
