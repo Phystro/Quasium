@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 import os
 import gi
 import sys
@@ -13,7 +14,7 @@ from gi.repository.GdkPixbuf import Pixbuf
 from include.query_handler import QueryService
 from time import time, sleep
 
-__version__ = "0.0.7"
+__version__ = "0.0.8"
 __head__ = "Quasium"
 __alias__ = "Quasi-CSQ"
 __subtitle__ = "Quasium - Eccentric Tensor Labs"
